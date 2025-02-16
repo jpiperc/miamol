@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín - Para Ella</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            color: #d32f2f;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out, floatTitle 3s infinite ease-in-out;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            animation: slideIn 1.5s ease-in-out, floatText 3s infinite ease-in-out;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            animation: floatImage 4s infinite ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+        .heart {
+            color: #d32f2f;
+            font-size: 2em;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes floatTitle {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes floatText {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes floatImage {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .floating-hearts span {
+            position: absolute;
+            color: #d32f2f;
+            font-size: 2em;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+            100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Feliz San Valentín, Mi Amor!</h1>
+        <p>Eres muy especial para mi vida. Cada momento a tu lado es un regalo que atesoro con todo mi corazón.</p>
+        <p>Gracias por ser mi showsera, mi bb y mi todo. Te amo más de lo que las palabras pueden expresar.</p>
+        <div class="gallery">
+            <img src="imagenes\IMG-20250213-WA0021.jpg" alt="Nuestra foto juntos">
+            <img src="imagenes\IMG-20250213-WA0022.jpg" alt="Un momento especial">
+            <img src="imagenes\IMG-20250213-WA0023.jpg" alt="Sonriendo juntos">
+            <img src="imagenes\IMG-20250213-WA0024.jpg" alt="Más recuerdos">
+            <img src="imagenes\IMG-20250213-WA0026.jpg" alt="Aventuras juntos">
+            <img src="imagenes\IMG-20250213-WA0027.jpg" alt="Sonrisas compartidas">
+            <img src="imagenes\IMG-20250213-WA0028.jpg" alt="Más momentos especiales">
+            <img src="imagenes\IMG-20250213-WA0025.jpg" alt="Nuestras risas">
+        </div>
+        <p>Eres mi razón para sonreír cada día. <span class="heart">❤️</span></p>
+    </div>
+
+    <div class="floating-hearts">
+        <!-- Corazones flotantes generados dinámicamente -->
+    </div>
+
+    <script>
+        // Generar corazones flotantes
+        const floatingHearts = document.querySelector('.floating-hearts');
+        const numHearts = 60;
+    
+        for (let i = 0; i < numHearts; i++) {
+            const heart = document.createElement('span');
+            heart.innerHTML = '❤️';
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            heart.style.fontSize = `${Math.random() * 2 + 1}em`;
+            floatingHearts.appendChild(heart);
+        }
+    
+        // Efecto de collage aleatorio
+        const images = document.querySelectorAll('.gallery img');
+        images.forEach(img => {
+            const randomRotation = Math.random() * 20 - 10; // Rotación aleatoria entre -10 y 10 grados
+            const randomDelay = Math.random() * 1; // Retraso aleatorio para la animación
+            img.style.transform = `rotate(${randomRotation}deg)`;
+            img.style.animationDelay = `${randomDelay}s`;
+        });
+    </script>
+    
+</body>
+</html> 
